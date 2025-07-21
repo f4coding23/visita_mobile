@@ -1,0 +1,450 @@
+
+/* ===== IMPORTAR TOASTR ===== */
+@import 'ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* ===== NOTIFICACIONES ULTRA MODERNAS ===== */
+
+/* Contenedor principal */
+.toast-container {
+  position: fixed;
+  z-index: 999999;
+}
+
+/* Toast moderno con glassmorphism - DISTRIBUCIÓN MEJORADA */
+.modern-toast {
+  border-radius: 20px !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.15),
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif !important;
+  min-width: 420px !important;
+  max-width: 500px !important;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transform-origin: top right !important;
+}
+
+/* Animación de entrada 3D */
+.toast-top-right {
+  animation: slideInModern 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes slideInModern {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.85) rotateY(20deg);
+    filter: blur(10px);
+  }
+  60% {
+    transform: translateX(-12px) scale(1.02) rotateY(-2deg);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Línea de luz superior */
+.modern-toast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 20%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.8) 80%,
+    transparent 100%);
+  animation: shimmerTop 3s infinite;
+}
+
+@keyframes shimmerTop {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* CONTENIDO DEL TOAST - DISTRIBUCIÓN OPTIMIZADA */
+.modern-toast .toast-title {
+  padding: 28px 70px 10px 80px !important;
+  margin: 0 !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.4px !important;
+  line-height: 1.3 !important;
+  color: inherit !important;
+  word-wrap: break-word !important;
+}
+
+.modern-toast .toast-message {
+  padding: 0px 70px 28px 80px !important;
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  font-weight: 500 !important;
+  color: inherit !important;
+  word-wrap: break-word !important;
+  opacity: 0.95 !important;
+}
+
+/* Iconos modernos con Material Icons - MEJOR POSICIONAMIENTO */
+.modern-toast::after {
+  content: '';
+  position: absolute !important;
+  left: 28px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Material Icons' !important;
+  font-size: 24px !important;
+  font-weight: normal !important;
+  z-index: 1 !important;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Efecto de pulso en el icono */
+.modern-toast::after {
+  animation: iconPulse 2.5s infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 0px rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 0 0 8px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Botón cerrar ultra moderno - MEJOR POSICIONAMIENTO */
+.modern-toast .toast-close-button {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 12px !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-size: 18px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  font-weight: bold !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.modern-toast .toast-close-button:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+  transform: scale(1.1) rotate(90deg) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Barra de progreso moderna */
+.modern-toast .toast-progress {
+  height: 4px !important;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.3)) !important;
+  border-radius: 0 0 20px 20px !important;
+  bottom: 0 !important;
+  animation: progressGlow 2s infinite alternate !important;
+}
+
+@keyframes progressGlow {
+  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+}
+
+/* ===== TIPOS DE NOTIFICACIÓN MODERNOS ===== */
+
+/* Success - Verde moderno */
+.toast-success.modern-toast {
+  background: linear-gradient(135deg,
+    rgba(236, 253, 245, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 100%) !important;
+  border-left: 4px solid #10b981 !important;
+  color: #065f46 !important;
+}
+
+.toast-success.modern-toast::after {
+  content: 'check_circle' !important;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+}
+
+.toast-success.modern-toast .toast-title {
+  color: #065f46 !important;
+}
+
+.toast-success.modern-toast .toast-message {
+  color: #047857 !important;
+}
+
+/* Error - Rojo moderno */
+.toast-error.modern-toast {
+  background: linear-gradient(135deg,
+    rgba(254, 242, 242, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 100%) !important;
+  border-left: 4px solid #ef4444 !important;
+  color: #991b1b !important;
+}
+
+.toast-error.modern-toast::after {
+  content: 'error' !important;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+}
+
+.toast-error.modern-toast .toast-title {
+  color: #991b1b !important;
+}
+
+.toast-error.modern-toast .toast-message {
+  color: #dc2626 !important;
+}
+
+/* Warning - Amarillo moderno */
+.toast-warning.modern-toast {
+  background: linear-gradient(135deg,
+    rgba(255, 251, 235, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 100%) !important;
+  border-left: 4px solid #f59e0b !important;
+  color: #92400e !important;
+}
+
+.toast-warning.modern-toast::after {
+  content: 'warning' !important;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: white !important;
+}
+
+.toast-warning.modern-toast .toast-title {
+  color: #92400e !important;
+}
+
+.toast-warning.modern-toast .toast-message {
+  color: #d97706 !important;
+}
+
+/* Info - Azul moderno */
+.toast-info.modern-toast {
+  background: linear-gradient(135deg,
+    rgba(239, 246, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.95) 100%) !important;
+  border-left: 4px solid #3b82f6 !important;
+  color: #1e40af !important;
+}
+
+.toast-info.modern-toast::after {
+  content: 'info' !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+}
+
+.toast-info.modern-toast .toast-title {
+  color: #1e40af !important;
+}
+
+.toast-info.modern-toast .toast-message {
+  color: #1d4ed8 !important;
+}
+
+/* ===== RESPONSIVE OPTIMIZADO ===== */
+
+/* Pantallas grandes (Desktop) */
+@media (min-width: 1200px) {
+  .modern-toast {
+    min-width: 460px !important;
+    max-width: 540px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .modern-toast .toast-title {
+    padding: 32px 80px 12px 90px !important;
+    font-size: 20px !important;
+  }
+
+  .modern-toast .toast-message {
+    padding: 0px 80px 32px 90px !important;
+    font-size: 16px !important;
+  }
+
+  .modern-toast::after {
+    width: 48px !important;
+    height: 48px !important;
+    left: 32px !important;
+    font-size: 26px !important;
+  }
+
+  .modern-toast .toast-close-button {
+    width: 40px !important;
+    height: 40px !important;
+    top: 22px !important;
+    right: 22px !important;
+    font-size: 20px !important;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .modern-toast {
+    min-width: 400px !important;
+    max-width: 480px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .modern-toast .toast-title {
+    padding: 30px 75px 11px 85px !important;
+    font-size: 19px !important;
+  }
+
+  .modern-toast .toast-message {
+    padding: 0px 75px 30px 85px !important;
+    font-size: 15px !important;
+  }
+
+  .modern-toast::after {
+    width: 46px !important;
+    height: 46px !important;
+    left: 30px !important;
+    font-size: 25px !important;
+  }
+}
+
+/* Móviles */
+@media (max-width: 767px) {
+  .modern-toast {
+    min-width: auto !important;
+    max-width: calc(100vw - 32px) !important;
+    margin: 0 16px 16px 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .modern-toast .toast-title {
+    padding: 24px 60px 8px 70px !important;
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+  }
+
+  .modern-toast .toast-message {
+    padding: 0px 60px 24px 70px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .modern-toast::after {
+    width: 40px !important;
+    height: 40px !important;
+    left: 22px !important;
+    font-size: 22px !important;
+  }
+
+  .modern-toast .toast-close-button {
+    width: 32px !important;
+    height: 32px !important;
+    top: 18px !important;
+    right: 18px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 400px) {
+  .modern-toast {
+    margin: 0 12px 12px 12px !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  .modern-toast .toast-title {
+    padding: 22px 55px 7px 65px !important;
+    font-size: 16px !important;
+  }
+
+  .modern-toast .toast-message {
+    padding: 0px 55px 22px 65px !important;
+    font-size: 13px !important;
+  }
+
+  .modern-toast::after {
+    width: 36px !important;
+    height: 36px !important;
+    left: 20px !important;
+    font-size: 20px !important;
+  }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  .modern-toast,
+  .modern-toast::before,
+  .modern-toast::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== OPTIMIZACIÓN PARA ORIENTACIÓN ===== */
+@media (orientation: landscape) and (max-height: 600px) {
+  .modern-toast {
+    margin-bottom: 12px !important;
+  }
+
+  .modern-toast .toast-title {
+    padding-top: 20px !important;
+    padding-bottom: 6px !important;
+  }
+
+  .modern-toast .toast-message {
+    padding-bottom: 20px !important;
+  }
+}
+
+

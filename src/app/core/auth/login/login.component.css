@@ -1,0 +1,325 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f0f5 0%, #e8e8ed 50%, #f0f0f5 100%);
+  padding: 0px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+}
+
+/* ===== TARJETA DE LOGIN ===== */
+.login-card {
+  background: white;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 8px 40px rgba(196, 30, 58, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== HEADER/CABECERA ===== */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.brand-header {
+  background: linear-gradient(135deg, #c41e3a 0%, #a91b32 50%, #c41e3a 100%);
+  margin: -48px -40px 32px -40px;
+  padding: 20px 40px;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.laboratories-text {
+  display: block;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo-circle {
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c41e3a;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #c41e3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brand-text {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ===== FORMULARIO ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-field {
+  width: 100%;
+}
+
+/* ===== INPUTS MODERNOS ===== */
+::ng-deep .input-field .mat-mdc-form-field {
+  width: 100% !important;
+  font-family: inherit !important;
+}
+
+::ng-deep .input-field .mat-mdc-text-field-wrapper {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  min-height: 48px !important;
+}
+
+::ng-deep .input-field .mat-mdc-text-field-wrapper:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(196, 30, 58, 0.05) !important;
+  transform: translateY(-1px) !important;
+}
+
+::ng-deep .input-field .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+  background-color: white !important;
+  border-color: #c41e3a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(196, 30, 58, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+::ng-deep .input-field .mat-mdc-floating-label {
+  color: #64748b !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+::ng-deep .input-field .mat-mdc-form-field.mat-focused .mat-mdc-floating-label,
+::ng-deep .input-field .mdc-floating-label--float-above {
+  color: #c41e3a !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  background: white !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+}
+
+::ng-deep .input-field .mat-mdc-form-field input {
+  color: #1e293b !important;
+  padding: 16px 16px 16px 16px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+::ng-deep .input-field .mat-mdc-line-ripple::before,
+::ng-deep .input-field .mat-mdc-line-ripple::after {
+  display: none !important;
+}
+
+::ng-deep .input-field .mat-mdc-form-field.mat-form-field-invalid .mat-mdc-text-field-wrapper {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1), 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+::ng-deep .input-field .mat-mdc-form-field-error {
+  color: #ef4444 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-top: 6px !important;
+  margin-left: 4px !important;
+}
+
+/* ===== BOTÓN OJO ===== */
+::ng-deep .input-field button[mat-icon-button] {
+  background: none !important;
+  border: none !important;
+  color: #64748b !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+::ng-deep .input-field button[mat-icon-button]:hover {
+  background: rgba(196, 30, 58, 0.08) !important;
+  color: #c41e3a !important;
+  transform: scale(1.05) !important;
+}
+
+::ng-deep .input-field .mat-ripple {
+  display: none !important;
+}
+
+/* ===== RECAPTCHA ===== */
+.recaptcha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.recaptcha:hover {
+  border-color: #ccc;
+  background: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.05);
+}
+
+.recaptcha-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.google-icon {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #c41e3a 0%, #a91b32 100%);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.2);
+}
+
+.google-icon::before {
+  content: 'G';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.recaptcha-logo span {
+  font-size: 11px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ===== CHECKBOX ===== */
+::ng-deep .recaptcha .mat-mdc-checkbox {
+  --mdc-checkbox-selected-icon-color: #c41e3a;
+  --mdc-checkbox-selected-hover-icon-color: #a91b32;
+}
+
+::ng-deep .recaptcha .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
+  background-color: #c41e3a !important;
+  border-color: #c41e3a !important;
+}
+
+::ng-deep .recaptcha .mat-mdc-checkbox .mdc-form-field {
+  color: #333 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+::ng-deep .login-btn {
+  background: linear-gradient(135deg, #b91c37 0%, #9a1b32 50%, #b91c37 100%) !important;
+  color: white !important;
+  border: none !important;
+  height: 52px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 2px 4px rgba(185, 28, 55, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+::ng-deep .login-btn:hover:not([disabled]) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3) !important;
+  background: linear-gradient(135deg, #c41e3a 0%, #a91b32 50%, #c41e3a 100%) !important;
+}
+
+::ng-deep .login-btn[disabled] {
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important;
+  color: #f1f5f9 !important;
+  opacity: 0.8 !important;
+  cursor: not-allowed !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 0px 16px;
+  }
+
+  .login-card {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .brand-header {
+    margin: -32px -24px 24px -24px;
+    padding: 16px 24px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 15px;
+  }
+
+  ::ng-deep .input-field .mat-mdc-form-field input {
+    font-size: 16px !important;
+  }
+}

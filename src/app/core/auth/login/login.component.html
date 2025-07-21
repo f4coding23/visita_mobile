@@ -1,0 +1,68 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Header -->
+    <div class="header">
+      <div class="brand-header">
+        <span class="laboratories-text">LABORATORIOS</span>
+        <div class="logo-section">
+          <div class="logo-circle">AC</div>
+          <span class="brand-text">FARMA S.A.</span>
+        </div>
+      </div>
+      <h1>Bienvenido</h1>
+      <p>Ingresa a tu cuenta</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+      <!-- Usuario -->
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" placeholder="Usuario">
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+          Usuario requerido
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Contraseña -->
+      <mat-form-field appearance="fill" class="input-field">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+          placeholder="Contraseña">
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          type="button">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Contraseña requerida
+        </mat-error>
+      </mat-form-field>
+
+      <!-- reCAPTCHA -->
+      <div class="recaptcha">
+        <mat-checkbox formControlName="recaptcha">
+          No soy un robot
+        </mat-checkbox>
+        <div class="recaptcha-logo">
+          <div class="google-icon"></div>
+          <span>reCAPTCHA</span>
+        </div>
+      </div>
+
+      <!-- Botón -->
+      <button
+        mat-raised-button
+        type="submit"
+        class="login-btn"
+        [disabled]="loginForm.invalid">
+        INGRESAR
+      </button>
+    </form>
+  </div>
+</div>  
