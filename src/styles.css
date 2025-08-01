@@ -1,450 +1,232 @@
+/* ============================================================================
+   🎨 SISTEMA DE DISEÑO GLOBAL
+   ============================================================================ */
 
-/* ===== IMPORTAR TOASTR ===== */
-@import 'ngx-toastr/toastr';
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+   :root {
+    /* 🎨 COLORES PRINCIPALES */
+    --primary: #A02328;
+    --primary-light: #C52D33;
+    --primary-dark: #7A1B1F;
 
-/* You can add global styles to this file, and also import other style files */
+    /* 🎨 COLORES SISTEMA */
+    --blue: #007AFF;
+    --blue-light: #4A90E2;
+    --blue-dark: #0056CC;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+    --green: #34C759;
+    --green-light: #5ED77D;
+    --green-dark: #28A745;
 
+    --orange: #FF9500;
+    --orange-light: #FFB340;
+    --orange-dark: #E6851A;
 
-/* ===== NOTIFICACIONES ULTRA MODERNAS ===== */
+    --red: #FF3B30;
+    --red-light: #FF6B60;
+    --red-dark: #DC2626;
 
-/* Contenedor principal */
-.toast-container {
-  position: fixed;
-  z-index: 999999;
-}
+    --gray: #8E8E93;
+    --gray-light: #C7C7CC;
+    --gray-dark: #48484A;
 
-/* Toast moderno con glassmorphism - DISTRIBUCIÓN MEJORADA */
-.modern-toast {
-  border-radius: 20px !important;
-  backdrop-filter: blur(25px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.15),
-    0 10px 40px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif !important;
-  min-width: 420px !important;
-  max-width: 500px !important;
-  padding: 0 !important;
-  margin-bottom: 20px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  transform-origin: top right !important;
-}
+    /* 🏠 FONDOS */
+    --bg-primary: #F2F2F7;
+    --bg-white: #FFFFFF;
+    --bg-secondary: #F9F9FB;
 
-/* Animación de entrada 3D */
-.toast-top-right {
-  animation: slideInModern 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-}
+    /* 📝 TEXTOS */
+    --text-primary: #1C1C1E;
+    --text-secondary: #8E8E93;
+    --text-tertiary: #C7C7CC;
 
-@keyframes slideInModern {
-  0% {
-    opacity: 0;
-    transform: translateX(100%) scale(0.85) rotateY(20deg);
-    filter: blur(10px);
-  }
-  60% {
-    transform: translateX(-12px) scale(1.02) rotateY(-2deg);
-    filter: blur(0px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1) rotateY(0deg);
-    filter: blur(0px);
-  }
-}
+    /* 📏 ESPACIADO */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
 
-/* Línea de luz superior */
-.modern-toast::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.8) 20%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 255, 255, 0.8) 80%,
-    transparent 100%);
-  animation: shimmerTop 3s infinite;
-}
+    /* 📐 RADIOS */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
 
-@keyframes shimmerTop {
-  0%, 100% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+    /* 🌟 SOMBRAS */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
 
-/* CONTENIDO DEL TOAST - DISTRIBUCIÓN OPTIMIZADA */
-.modern-toast .toast-title {
-  padding: 28px 70px 10px 80px !important;
-  margin: 0 !important;
-  font-size: 19px !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.4px !important;
-  line-height: 1.3 !important;
-  color: inherit !important;
-  word-wrap: break-word !important;
-}
+    /* ⚡ TRANSICIÓN */
+    --transition: 0.2s ease;
 
-.modern-toast .toast-message {
-  padding: 0px 70px 28px 80px !important;
-  margin: 0 !important;
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-  font-weight: 500 !important;
-  color: inherit !important;
-  word-wrap: break-word !important;
-  opacity: 0.95 !important;
-}
-
-/* Iconos modernos con Material Icons - MEJOR POSICIONAMIENTO */
-.modern-toast::after {
-  content: '';
-  position: absolute !important;
-  left: 28px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 16px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-family: 'Material Icons' !important;
-  font-size: 24px !important;
-  font-weight: normal !important;
-  z-index: 1 !important;
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Efecto de pulso en el icono */
-.modern-toast::after {
-  animation: iconPulse 2.5s infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% {
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      0 0 0 0px rgba(255, 255, 255, 0);
-  }
-  50% {
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      0 0 0 8px rgba(255, 255, 255, 0.3);
-  }
-}
-
-/* Botón cerrar ultra moderno - MEJOR POSICIONAMIENTO */
-.modern-toast .toast-close-button {
-  position: absolute !important;
-  top: 20px !important;
-  right: 20px !important;
-  width: 36px !important;
-  height: 36px !important;
-  border-radius: 12px !important;
-  background: rgba(0, 0, 0, 0.05) !important;
-  backdrop-filter: blur(10px) !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  font-size: 18px !important;
-  color: rgba(0, 0, 0, 0.6) !important;
-  opacity: 1 !important;
-  text-shadow: none !important;
-  font-weight: bold !important;
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-}
-
-.modern-toast .toast-close-button:hover {
-  background: rgba(0, 0, 0, 0.1) !important;
-  transform: scale(1.1) rotate(90deg) !important;
-  color: rgba(0, 0, 0, 0.8) !important;
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Barra de progreso moderna */
-.modern-toast .toast-progress {
-  height: 4px !important;
-  background: linear-gradient(90deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.3)) !important;
-  border-radius: 0 0 20px 20px !important;
-  bottom: 0 !important;
-  animation: progressGlow 2s infinite alternate !important;
-}
-
-@keyframes progressGlow {
-  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
-  100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
-}
-
-/* ===== TIPOS DE NOTIFICACIÓN MODERNOS ===== */
-
-/* Success - Verde moderno */
-.toast-success.modern-toast {
-  background: linear-gradient(135deg,
-    rgba(236, 253, 245, 0.95) 0%,
-    rgba(255, 255, 255, 0.95) 100%) !important;
-  border-left: 4px solid #10b981 !important;
-  color: #065f46 !important;
-}
-
-.toast-success.modern-toast::after {
-  content: 'check_circle' !important;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-  color: white !important;
-}
-
-.toast-success.modern-toast .toast-title {
-  color: #065f46 !important;
-}
-
-.toast-success.modern-toast .toast-message {
-  color: #047857 !important;
-}
-
-/* Error - Rojo moderno */
-.toast-error.modern-toast {
-  background: linear-gradient(135deg,
-    rgba(254, 242, 242, 0.95) 0%,
-    rgba(255, 255, 255, 0.95) 100%) !important;
-  border-left: 4px solid #ef4444 !important;
-  color: #991b1b !important;
-}
-
-.toast-error.modern-toast::after {
-  content: 'error' !important;
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
-  color: white !important;
-}
-
-.toast-error.modern-toast .toast-title {
-  color: #991b1b !important;
-}
-
-.toast-error.modern-toast .toast-message {
-  color: #dc2626 !important;
-}
-
-/* Warning - Amarillo moderno */
-.toast-warning.modern-toast {
-  background: linear-gradient(135deg,
-    rgba(255, 251, 235, 0.95) 0%,
-    rgba(255, 255, 255, 0.95) 100%) !important;
-  border-left: 4px solid #f59e0b !important;
-  color: #92400e !important;
-}
-
-.toast-warning.modern-toast::after {
-  content: 'warning' !important;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
-  color: white !important;
-}
-
-.toast-warning.modern-toast .toast-title {
-  color: #92400e !important;
-}
-
-.toast-warning.modern-toast .toast-message {
-  color: #d97706 !important;
-}
-
-/* Info - Azul moderno */
-.toast-info.modern-toast {
-  background: linear-gradient(135deg,
-    rgba(239, 246, 255, 0.95) 0%,
-    rgba(255, 255, 255, 0.95) 100%) !important;
-  border-left: 4px solid #3b82f6 !important;
-  color: #1e40af !important;
-}
-
-.toast-info.modern-toast::after {
-  content: 'info' !important;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
-  color: white !important;
-}
-
-.toast-info.modern-toast .toast-title {
-  color: #1e40af !important;
-}
-
-.toast-info.modern-toast .toast-message {
-  color: #1d4ed8 !important;
-}
-
-/* ===== RESPONSIVE OPTIMIZADO ===== */
-
-/* Pantallas grandes (Desktop) */
-@media (min-width: 1200px) {
-  .modern-toast {
-    min-width: 460px !important;
-    max-width: 540px !important;
-    margin-bottom: 24px !important;
+    /* 🔤 TIPOGRAFÍA */
+    --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
   }
 
-  .modern-toast .toast-title {
-    padding: 32px 80px 12px 90px !important;
-    font-size: 20px !important;
+  /* ============================================================================
+     🔄 RESET
+     ============================================================================ */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  .modern-toast .toast-message {
-    padding: 0px 80px 32px 90px !important;
+  html, body {
+    height: 100%;
+    font-family: var(--font-family);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ============================================================================
+     🎛️ ANGULAR MATERIAL OVERRIDES
+     ============================================================================ */
+
+  /* Form Fields */
+  .mat-mdc-form-field {
+    width: 100% !important;
+    font-family: var(--font-family) !important;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    background: var(--bg-secondary) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--gray-light) !important;
+    transition: all var(--transition) !important;
+    min-height: 48px !important;
+  }
+
+  .mat-mdc-text-field-wrapper:hover {
+    border-color: var(--primary-light) !important;
+  }
+
+  .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+    background: var(--bg-white) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(160, 35, 40, 0.1) !important;
+  }
+
+  /* Hide default outline */
+  .mat-mdc-form-field-outline,
+  .mat-mdc-form-field-outline-start,
+  .mat-mdc-form-field-outline-end,
+  .mat-mdc-form-field-outline-gap {
+    display: none !important;
+  }
+
+  /* Labels */
+  .mat-mdc-floating-label {
+    color: var(--text-secondary) !important;
+    font-weight: var(--font-weight-medium) !important;
+  }
+
+  .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+    color: var(--primary) !important;
+  }
+
+  /* Inputs */
+  .mat-mdc-form-field input {
+    color: var(--text-primary) !important;
     font-size: 16px !important;
+    padding: var(--space-md) var(--space-lg) !important;
   }
 
-  .modern-toast::after {
-    width: 48px !important;
-    height: 48px !important;
-    left: 32px !important;
-    font-size: 26px !important;
+  /* Errors */
+  .mat-mdc-form-field-error {
+    color: var(--red) !important;
+    font-size: 12px !important;
+    margin-top: var(--space-xs) !important;
   }
 
-  .modern-toast .toast-close-button {
-    width: 40px !important;
-    height: 40px !important;
-    top: 22px !important;
-    right: 22px !important;
-    font-size: 20px !important;
-  }
-}
-
-/* Tablets */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .modern-toast {
-    min-width: 400px !important;
-    max-width: 480px !important;
-    margin-bottom: 20px !important;
+  .mat-mdc-form-field.mat-mdc-form-field-invalid .mat-mdc-text-field-wrapper {
+    border-color: var(--red) !important;
+    background: rgba(255, 59, 48, 0.05) !important;
   }
 
-  .modern-toast .toast-title {
-    padding: 30px 75px 11px 85px !important;
-    font-size: 19px !important;
+  /* Buttons */
+  .mat-mdc-button,
+  .mat-mdc-raised-button {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    border-radius: var(--radius-lg) !important;
+    transition: all var(--transition) !important;
   }
 
-  .modern-toast .toast-message {
-    padding: 0px 75px 30px 85px !important;
-    font-size: 15px !important;
+  /* Icon Buttons */
+  .mat-mdc-icon-button {
+    border-radius: var(--radius-sm) !important;
+    transition: color var(--transition) !important;
   }
 
-  .modern-toast::after {
-    width: 46px !important;
-    height: 46px !important;
-    left: 30px !important;
-    font-size: 25px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 767px) {
-  .modern-toast {
-    min-width: auto !important;
-    max-width: calc(100vw - 32px) !important;
-    margin: 0 16px 16px 16px !important;
-    border-radius: 18px !important;
+  .mat-mdc-icon-button:hover {
+    background: rgba(160, 35, 40, 0.1) !important;
+    color: var(--primary) !important;
   }
 
-  .modern-toast .toast-title {
-    padding: 24px 60px 8px 70px !important;
-    font-size: 17px !important;
-    line-height: 1.4 !important;
+  /* Checkboxes */
+  .mat-mdc-checkbox {
+    font-family: var(--font-family) !important;
   }
 
-  .modern-toast .toast-message {
-    padding: 0px 60px 24px 70px !important;
+  .mat-mdc-checkbox .mdc-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .mat-mdc-checkbox .mdc-checkbox__native-control {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .mat-mdc-checkbox .mdc-form-field {
     font-size: 14px !important;
-    line-height: 1.5 !important;
+    font-weight: var(--font-weight-medium) !important;
   }
 
-  .modern-toast::after {
-    width: 40px !important;
-    height: 40px !important;
-    left: 22px !important;
-    font-size: 22px !important;
+  /* ============================================================================
+     🛠️ UTILIDADES
+     ============================================================================ */
+  .container {
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
   }
 
-  .modern-toast .toast-close-button {
-    width: 32px !important;
-    height: 32px !important;
-    top: 18px !important;
-    right: 18px !important;
-    font-size: 16px !important;
+  .text-center { text-align: center; }
+  .text-primary { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .bg-white { background: var(--bg-white); }
+  .rounded { border-radius: var(--radius-md); }
+
+  /* ============================================================================
+     📱 RESPONSIVE
+     ============================================================================ */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 var(--space-md);
+    }
+
+    /* Inputs móvil */
+    .mat-mdc-text-field-wrapper {
+      min-height: 42px !important;
+    }
+
+    .mat-mdc-form-field input {
+      padding: var(--space-sm) var(--space-md) !important;
+      font-size: 16px !important;
+    }
+
+    /* Labels móvil */
+    .mat-mdc-floating-label {
+      font-size: 14px !important;
+    }
   }
-}
-
-/* Móviles pequeños */
-@media (max-width: 400px) {
-  .modern-toast {
-    margin: 0 12px 12px 12px !important;
-    max-width: calc(100vw - 24px) !important;
-  }
-
-  .modern-toast .toast-title {
-    padding: 22px 55px 7px 65px !important;
-    font-size: 16px !important;
-  }
-
-  .modern-toast .toast-message {
-    padding: 0px 55px 22px 65px !important;
-    font-size: 13px !important;
-  }
-
-  .modern-toast::after {
-    width: 36px !important;
-    height: 36px !important;
-    left: 20px !important;
-    font-size: 20px !important;
-  }
-}
-
-/* ===== ACCESIBILIDAD ===== */
-@media (prefers-reduced-motion: reduce) {
-  .modern-toast,
-  .modern-toast::before,
-  .modern-toast::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* ===== OPTIMIZACIÓN PARA ORIENTACIÓN ===== */
-@media (orientation: landscape) and (max-height: 600px) {
-  .modern-toast {
-    margin-bottom: 12px !important;
-  }
-
-  .modern-toast .toast-title {
-    padding-top: 20px !important;
-    padding-bottom: 6px !important;
-  }
-
-  .modern-toast .toast-message {
-    padding-bottom: 20px !important;
-  }
-}
-
-
