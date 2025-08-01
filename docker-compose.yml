@@ -2,22 +2,22 @@ version: '3.8'
 
 services:
   angular-app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     container_name: acvisita-frontend
     ports:
       - "4200:4200"
     volumes:
       - .:/app
+      - /app/node_modules    # <- Así evitas problemas entre host y contenedor
     environment:
-      - BACKEND_URL=http://host.docker.internal:8000
-      - NG_CLI_ANALYTICS=false
+      BACKEND_URL: http://host.docker.internal:8000
+      NG_CLI_ANALYTICS: false
     networks:
       - acvisita-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
-
-volumes:
-  node_modules:
 
 networks:
   acvisita-network:
