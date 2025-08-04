@@ -1,12 +1,8 @@
-/* ============================================================================
-   🔐 LOGIN COMPONENT - USANDO VARIABLES GLOBALES
-   ============================================================================ */
+/* ============= LOGIN COMPONENT ============= */
 
-/* Contenedor principal */
+/* Layout principal */
 .login-container {
   min-height: 100vh;
-  min-height: 100dvh;
-  /* Dynamic viewport height para móvil */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +10,6 @@
   padding: var(--space-md);
 }
 
-/* Tarjeta de login */
 .login-card {
   background: var(--bg-white);
   border-radius: var(--radius-lg);
@@ -36,26 +31,22 @@
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
-/* Header/Brand */
-.header {
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-}
-
+/* Branding */
 .brand-header {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   margin: calc(var(--space-2xl) * -1) calc(var(--space-2xl) * -1) var(--space-xl) calc(var(--space-2xl) * -1);
   padding: var(--space-xl);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  text-align: center;
 }
 
 .laboratories-text {
   color: rgba(255, 255, 255, 0.8);
   font-size: 11px;
-  font-weight: var(--font-weight-semibold);
   letter-spacing: 2px;
-  margin-bottom: var(--space-sm);
   text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-sm);
 }
 
 .logo-section {
@@ -86,31 +77,23 @@
   font-size: 20px;
 }
 
+.header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
 .header h1 {
   font-size: 32px;
   font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
   margin-bottom: var(--space-sm);
 }
 
 .header p {
   font-size: 16px;
   color: var(--text-secondary);
-  font-weight: var(--font-weight-medium);
 }
 
-/* Formulario */
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
-.form-field {
-  width: 100%;
-}
-
-/* reCAPTCHA */
+/* ============= reCAPTCHA ============= */
 .recaptcha-container {
   width: 100%;
 }
@@ -119,16 +102,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) var(--space-lg);
+  gap: var(--space-lg);
   border: 1px solid var(--gray-light);
   border-radius: var(--radius-md);
   background: var(--bg-secondary);
-  transition: all var(--transition);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition);
 }
 
-.recaptcha:hover {
+.recaptcha:hover,
+.recaptcha:focus-within {
   border-color: var(--primary-light);
-  box-shadow: var(--shadow-sm);
 }
 
 .recaptcha.error {
@@ -139,27 +125,27 @@
 .recaptcha-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+  user-select: none;
 }
 
 .google-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border-radius: var(--space-xs);
+  border-radius: var(--radius-xs, 6px);
   position: relative;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .google-icon::before {
   content: 'G';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
   font-weight: var(--font-weight-semibold);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .recaptcha-logo span {
@@ -168,35 +154,28 @@
   font-weight: var(--font-weight-medium);
 }
 
-.recaptcha-error {
-  color: var(--red);
-  font-size: 12px;
-  font-weight: var(--font-weight-medium);
-  margin-top: var(--space-xs);
-}
-
-/* Botón Login */
+/* ============= Botón ============= */
 .login-btn {
+  width: 100%;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
   color: white !important;
-  border: none !important;
-  height: 52px !important;
   border-radius: 100px !important;
+  height: 52px !important;
   font-size: 16px !important;
   font-weight: var(--font-weight-semibold) !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
   box-shadow: var(--shadow-md) !important;
   margin-bottom: var(--space-lg) !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-btn:hover:not([disabled]) {
   background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%) !important;
   box-shadow: var(--shadow-lg) !important;
-}
-
-.login-btn:focus-visible:not([disabled]) {
-  box-shadow: 0 0 0 3px rgba(160, 35, 40, 0.25) !important;
 }
 
 .login-btn[disabled] {
@@ -206,6 +185,7 @@
   cursor: not-allowed !important;
 }
 
+/* Spinner alineado */
 .loading-content {
   display: flex;
   align-items: center;
@@ -213,27 +193,40 @@
   gap: var(--space-md);
 }
 
-.spinner {
-  color: white !important;
+/* ================= CAMPOS Y ERRORES =============== */
+
+.login-card .form-field {
+  margin-bottom: 14px;
 }
 
-/* ============================================================================
-   📱 RESPONSIVE
-   ============================================================================ */
-@media (max-width: 768px) {
-  .login-container {
-    padding: var(--space-sm) var(--space-md);
-    min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: center;
-    align-items: center;
-  }
+.login-card mat-error,
+.login-card .recaptcha-error {
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px !important;
+  font-family: var(--font-family) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  color: var(--red-dark, #DC2626) !important;
+  background: none !important;
+  margin-top: 4px !important;
+  margin-bottom: 12px !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  letter-spacing: 0.1px;
+  opacity: 1;
+}
 
+.login-card .recaptcha-error {
+  margin-bottom: 12px !important;
+}
+
+/* ====================== Responsive ====================== */
+@media (max-width: 768px) {
   .login-card {
-    padding: var(--space-lg) var(--space-lg);
+    padding: var(--space-lg);
     max-width: 100%;
-    min-height: auto;
-    margin: 0;
   }
 
   .brand-header {
@@ -241,29 +234,18 @@
     padding: var(--space-md);
   }
 
-  .header {
-    margin-bottom: var(--space-md);
-  }
-
-  .laboratories-text {
-    font-size: 10px;
-    margin-bottom: var(--space-xs);
-    letter-spacing: 1.5px;
-  }
-
-  .logo-section {
-    gap: var(--space-sm);
-  }
-
   .logo-circle {
     width: 30px;
     height: 30px;
     font-size: 13px;
-    border-width: 1px;
   }
 
   .brand-text {
     font-size: 17px;
+  }
+
+  .header {
+    margin-bottom: var(--space-md);
   }
 
   .header h1 {
@@ -275,56 +257,27 @@
     font-size: 14px;
   }
 
-  .login-form {
-    gap: var(--space-md);
-  }
-
-  /* Inputs móvil */
-  .form-field {
-    margin-bottom: 0;
-  }
-
-  /* reCAPTCHA móvil más robusto */
-  .recaptcha {
-    padding: var(--space-md) var(--space-lg);
-    min-height: 44px;
-    border-width: 1.5px;
-  }
-
-  .google-icon {
-    width: 26px;
-    height: 26px;
-  }
-
-  .google-icon::before {
-    font-size: 12px;
-  }
-
-  .recaptcha-logo span {
-    font-size: 11px;
-    font-weight: var(--font-weight-semibold);
-  }
-
-  /* Checkbox móvil más grande */
-  .mat-mdc-checkbox .mdc-checkbox {
-    width: 22px !important;
-    height: 22px !important;
-  }
-
-  .mat-mdc-checkbox .mdc-checkbox__native-control {
-    width: 22px !important;
-    height: 22px !important;
-  }
-
-  .mat-mdc-checkbox .mdc-form-field {
-    font-size: 15px !important;
-  }
-
-  /* Botón móvil */
   .login-btn {
     height: 48px !important;
     font-size: 14px !important;
-    margin-top: var(--space-sm) !important;
-    margin-bottom: var(--space-lg) !important;
+  }
+
+  .recaptcha {
+    padding: var(--space-md);
+  }
+
+  .login-card mat-error,
+  .login-card .recaptcha-error {
+    font-size: 12px !important;
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-semibold) !important;
+    color: var(--red-dark, #DC2626) !important;
+    opacity: 1;
+  }
+
+  .login-card mat-error::before,
+  .login-card .recaptcha-error::before {
+    font-size: 13px;
+    opacity: 0.7;
   }
 }
